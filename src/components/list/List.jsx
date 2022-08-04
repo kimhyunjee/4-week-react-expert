@@ -26,7 +26,8 @@ const List = (props)=> {
   // console.log(props.todo);
 
   
-  const todos = useSelector((state) => state.todo.todos );
+  const {todos} = useSelector((state) => state.todos );
+   //const {} 쓰면 객체를 가져옴 state.todos .todos =>맨 뒤에 안써도됨
   //state.().todos 여기 ()안에 들어가는게 reducer 함수명과 일치해야한다.
   // console.log(todos);
   // const isDoneType = [false,true];
