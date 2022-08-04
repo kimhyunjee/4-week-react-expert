@@ -1,9 +1,9 @@
 // redux.confiStore.js
 
 import { createStore , combineReducers } from "redux";
-import todo from "../modules/todos";
+import todos from "../modules/todos";
 
-const rootReducer = combineReducers({ todo });
+const rootReducer = combineReducers({ todos });
 
 const store = createStore(rootReducer);
 
