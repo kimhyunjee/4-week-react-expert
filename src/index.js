@@ -1,14 +1,26 @@
+//index.js
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//추가코드
+import {Provider} from "react-redux";
+import store from './redux/config/configStore';
+import { BrowserRouter } from "react-router-dom";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+    <Provider store= {store}>
+      <BrowserRouter> 
+      {/* 웹 브라우저가 가지고 있는 주소관련정보들을 props로 넘겨주는 역할 */}
+        <App />
+      </BrowserRouter>
+    </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

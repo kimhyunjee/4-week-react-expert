@@ -1,11 +1,18 @@
-import './App.css';
+//App.js
+
+import React from 'react';
+
+// import { useSelector, useDispatch } from 'react-redux';
+import Router from './shared/Router';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Router />
   );
-}
+};
+
 
 export default App;
