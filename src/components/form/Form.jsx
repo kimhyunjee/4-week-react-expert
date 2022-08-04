@@ -17,13 +17,13 @@ import { nanoid } from "nanoid"
 function Form() {
 
     const dispatch = useDispatch();
-    const title = React.useRef(null);
-    const comment = React.useRef(null);
+    const title = React.useRef();
+    const comment = React.useRef();
 
 
     const addButton = (event) => {
-        event.preventDefault();
-        if (title.current.value === "" || comment.current.value ==="" ) return;
+        event.preventDefault(); //새로고침 방지
+        // if (title.current.value === "" || comment.current.value ==="" ) return;
         dispatch(addTodo({
             id:nanoid(),
             title: title.current.value,
@@ -47,8 +47,6 @@ function Form() {
             </FormContainer>
         );
 };
-
-
 
 // & 자기자신 아래에 있는 모든 태그에 적용
 // & > 자기자신 바로 아래에 있는 태그에만 적용
