@@ -5,13 +5,15 @@ import styled from "styled-components";
 
 import List from "../list/List";
 import { useDispatch } from "react-redux";
+import { deleteTodo , toggleTodo } from "../../redux/modules/todos";
+import { Link } from "react-router-dom";
 
 
-// const dispatch = useDispatch();
+
+
 
 // const deleteButton = (id) => {
 //   dispatch(todos.deleteTodo(id));
-
 // };
 
 // const completeButton = (id) => {
@@ -20,25 +22,36 @@ import { useDispatch } from "react-redux";
 
 
 function Todo(props) {
+    // console.log(props);콘솔 잘.. 찍어보자
+    const dispatch = useDispatch();
+
+    const deleteButton = () => {
+        dispatch(deleteTodo(props.todo.id));
+        // console.log(deleteTodo(props.todo.id)); //액션타입함수에 id값을 넘겨줌
+    };
+    const toggleButton = () => {
+        dispatch(toggleTodo(props.todo.id));
+        console.log(toggleTodo(props.todo.id));
+    };
+
+
     
     return (
-            <TodoContainer >
+        <TodoContainer >
             {/* onClick={() => modify(todo.id)} todocontainer안에 */}
-                <div>
-                    <h2>{props.titleText}</h2>
-                    <div>{props.commentText}</div>
-                </div>
-                <ButtonGroup>
-                    <DeleteButton>
-                        {/* // onClick={() => deleteButton(todo.id)} */}
-                        삭제하기
-                    </DeleteButton>
-                    <CompleteButton>
-                        {/* onClick={() => completeButton(todo.id)} */}
-                        {props.todo.isDone ? "취소하기" : "완료하기"}
-                    </CompleteButton>
-                </ButtonGroup>
-            </TodoContainer>
+            <Link to= {`/Detail/${props.todo.id}`}> 상세보기 </Link>
+                <h2>{props.todo.title}</h2>
+                {/* function Todo 아래에 콘솔 찍어서 확인 */}
+                <p>{props.todo.comment}</p>
+            <ButtonGroup>
+                <DeleteButton onClick={deleteButton}>
+                    삭제하기
+                </DeleteButton>
+                <CompleteButton onClick={toggleButton}>
+                    {props.todo.isDone ? "취소하기" : "완료하기"}
+                </CompleteButton>
+            </ButtonGroup>
+        </TodoContainer>
     );
 };
 
