@@ -12,7 +12,8 @@ function Router() {
         <Routes>
             <Route path="/" element={<TodoList />} />
             <Route path="/Detail/:id" element={<DetailPage />} />
-            <Route path="/Not" element={<NotFound />} />
+            <Route path="/*" element={<NotFound />} /> 
+            {/* 슬래시 뒤에 별표를 붙이면 주소오류가 났을 때 NotFound로 가게 된다 ! */}
         </Routes>
     );
 };
